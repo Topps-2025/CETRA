@@ -1,0 +1,99 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# ---------------------------------------------------------------------------
+# LaTeX
+# ---------------------------------------------------------------------------
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/*.toc
+paper/*.lof
+paper/*.lot
+paper/*.nav
+paper/*.snm
+paper/*.vrb
+paper/sections/*.aux
+
+# ---------------------------------------------------------------------------
+# Data and experiment outputs (keep the READMEs)
+# ---------------------------------------------------------------------------
+data/raw/
+data/processed/
+data/*.zip
+data/*.tar.gz
+experiments/results/*
+!experiments/results/README.md
+
+# ---------------------------------------------------------------------------
+# Local working files in the archived proposal
+# (kept on disk, not intended for version control)
+# ---------------------------------------------------------------------------
+docs/proposal/**/__pycache__/
+docs/proposal/**/_audit_*/
+docs/proposal/**/_v*_work/
+docs/proposal/**/*.log
+docs/proposal/**/*.aux
+docs/proposal/**/*.out
+
+# ---------------------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# ---------------------------------------------------------------------------
+# Secrets
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# ---------------------------------------------------------------------------
+# Public code repository scope
+# Internal research notes, paper sources, datasets, and experiment outputs
+# stay local; only the reusable package and its tests are published.
+# ---------------------------------------------------------------------------
+docs/
+data/
+experiments/
+paper/
+references/
+notebooks/
+scripts/
+Makefile
+zen.json
+.tmp_*
+.obsidian/
+.external/
+src/README.md
+tests/README.md
+configs/README.md

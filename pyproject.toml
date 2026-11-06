@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=57", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cetra"
+version = "0.1.0.dev0"
+description = "CETRA: learning to decompose, abstract, and recombine agent experience"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "TBD" }
+authors = [{ name = "CETRA project" }]
+dependencies = ["requests>=2.31"]
+
+[project.urls]
+Homepage = "https://github.com/Topps-2025/CETRA"
+Repository = "https://github.com/Topps-2025/CETRA"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7",
+  "ruff>=0.4",
+  "mypy>=1.8",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.10"
+packages = ["cetra"]
+mypy_path = "src"

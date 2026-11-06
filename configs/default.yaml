@@ -1,0 +1,75 @@
+# CETRA default configuration (skeleton).
+# Copy to configs/<experiment>.yaml and override only what changes.
+
+experiment:
+  name: cetra_default
+  seed: 0
+  output_dir: experiments/results/${experiment.name}
+
+model:
+  # Base model used for structured reasoning and policy rollouts.
+  # Keep the exact identifier here; record it in every result file.
+  name: "<base-model>"
+  temperature: 0.0
+  max_tokens: 4096
+  # Optional separate model for evaluation/judging.
+  judge: "<judge-model>"
+
+memory:
+  rule_schema: "condition-action-effect"
+  max_rules: 2000
+  max_chains: 500
+  versioning: true
+  rollback: true
+  shadow_mode: true
+
+abstraction:
+  boundary_policy: learned          # learned | fixed
+  condition_proposal: structured_reasoning
+  max_candidate_conditions: 8
+  paired_execution:
+    enabled: true
+    repeats: 5
+    effect_size_threshold: 0.2
+    confidence_level: 0.95
+  unknown_condition_fallback: narrow_domain
+
+composition:
+  max_chain_length: 6
+  require_precondition_match: true
+  fallback: true
+  consolidation_min_contexts: 3
+
+policy:
+  init: supervised
+  objective: dpo
+  beta: 0.1
+  learning_rate: 0.00001
+  batch_size: 16
+  preference_source: paired_execution
+
+evaluation:
+  environments:
+    - alfworld
+    - webarena
+  supplements:
+    - longmemeval
+    - locomo
+  transfer_protocol: freeze_clear_rebuild
+  construction_budget:
+    trajectories: 500
+    tool_calls: 20000
+  metrics:
+    - success_rate
+    - transfer_gain
+    - sample_efficiency
+    - negative_transfer_rate
+    - construction_cost
+    - abstraction_precision
+    - abstraction_recall
+
+logging:
+  level: INFO
+  save_construction_traces: true
+  save_prompts: true
+  jsonl: true
